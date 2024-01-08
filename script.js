@@ -62,24 +62,34 @@ function makeGridInputButton(gridContainer) {
 
 function addDrawingEffect(gridSquare) {
 
-    let filled = false;
+    let filled = 0;
+    let mouseDown = false;
 
     gridSquare.addEventListener('mousedown', () => {
         drawing = true;
-        filled = true;
+        colorGridSquare(gridSquare, 25.5, ++filled)
     });
 
     gridSquare.addEventListener('mouseup', () => drawing = false);
     gridSquare.addEventListener('dragstart', () => drawing = false);
 
     gridSquare.addEventListener('mouseenter', () => {
-        if (drawing) filled = true;
-        gridSquare.style.backgroundColor = '#acacac'
+        if (drawing) {
+            colorGridSquare(gridSquare, 25.5, ++filled)
+        } else {
+            gridSquare.style.backgroundColor = '#acacac';
+        }
     });
 
     gridSquare.addEventListener('mouseleave', () => {
         if (!filled) gridSquare.style.backgroundColor = '';
     });
+}
+
+function colorGridSquare(gridSquare, decrementValue, decrementMultiplier) {
+    let actualValue = decrementValue * decrementMultiplier;
+    if (actualValue > 255) actualValue = 255;
+    gridSquare.style.backgroundColor = `rgb(${255 - actualValue}, ${255 - actualValue}, ${255 - actualValue})`;
 }
 
 function fillWithGridSquares(gridContainer, gridsPerSide) {
