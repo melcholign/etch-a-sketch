@@ -1,13 +1,26 @@
 body {
     height: 100vh;    
     margin: 0px;
+}
+
+.grid-square {
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.column-center {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 #grid-container {
     border: 2px solid black;
-    display: flex;
     flex-wrap: wrap;
+}
+
+#input-button {
+    padding: 10px 50px;
+    margin-bottom: 20px;
 }
