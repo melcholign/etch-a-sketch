@@ -1,0 +1,13 @@
+body {
+    height: 100vh;    
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid-container {
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
